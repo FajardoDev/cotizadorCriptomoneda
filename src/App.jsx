@@ -56,10 +56,3 @@ function App() {
 }
 
 export default App;
-
-//  const Heading = styled.h1 `
-// font-size: 2rem;
-// font-family: lato;
-// `;
-
-// <Heading>Nuestros Productos</Heading>
