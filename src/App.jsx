@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Formulario } from "./components/Formulario";
 import ImagenCripto from "./img/imagen-criptos.png";
 
 const Contenedor = styled.div`
@@ -22,6 +23,20 @@ const Imagen = styled.img`
 
 const Heading = styled.h1`
 	font-family: "Lato", sans-serif;
+	text-align: center;
+	font-weight: 700;
+	margin-top: 80px;
+	margin-bottom: 50px;
+	font-size: 34px;
+
+	&::after {
+		content: "";
+		width: 100px;
+		height: 6px;
+		background-color: #66a2fe;
+		display: block;
+		margin: 10px auto 0 auto;
+	}
 `;
 
 function App() {
@@ -29,7 +44,13 @@ function App() {
 		<Contenedor>
 			<Imagen src={ImagenCripto} alt="Imagen Criptomonedas" />
 
-			<Heading className=" font-extrabold">Cotizador de Criptomonedas</Heading>
+			<div>
+				<Heading className=" font-extrabold">
+					Cotiza Criptomonedas al Instante
+				</Heading>
+
+				<Formulario />
+			</div>
 		</Contenedor>
 	);
 }
