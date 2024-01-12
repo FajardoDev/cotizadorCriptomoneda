@@ -1,9 +1,13 @@
 import styled from "@emotion/styled";
 import { Formulario } from "./components/Formulario";
 import ImagenCripto from "./img/imagen-criptos.png";
+import { useEffect, useState } from "react";
+import { getCotizarCripto } from "./helpers/getCotizarCripto";
+import { ShowResultadoApi } from "./components/ShowResultadoApi";
+import { useFetchCriptos } from "./hooks/useFetchCriptos";
 
 const Contenedor = styled.div`
-	max-width: 900px;
+	max-width: 992px;
 	margin: 0 auto;
 	width: 90%;
 
@@ -40,6 +44,23 @@ const Heading = styled.h1`
 `;
 
 function App() {
+	const [monedas, setMonedas] = useState({}); // para pasar el object valor de del select
+	const [resultadoApi, setResultadoApi] = useState({});
+
+	const { cripto, isLoading } = useFetchCriptos();
+
+	const getImages = async () => {
+		const newRespuesta = await getCotizarCripto(monedas);
+		setResultadoApi(newRespuesta);
+		// console.log(newRespuesta);
+	};
+
+	useEffect(() => {
+		if (Object.keys(monedas).length > 0) {
+			getImages();
+		}
+	}, [monedas]);
+
 	return (
 		<Contenedor>
 			<Imagen src={ImagenCripto} alt="Imagen Criptomonedas" />
@@ -49,7 +70,26 @@ function App() {
 					Cotiza Criptomonedas al Instante
 				</Heading>
 
-				<Formulario />
+				<Formulario setMonedas={setMonedas} cripto={cripto} />
+
+				{isLoading && (
+					<div className="sk-fading-circle">
+						<div className="sk-circle1 sk-circle"></div>
+						<div className="sk-circle2 sk-circle"></div>
+						<div className="sk-circle3 sk-circle"></div>
+						<div className="sk-circle4 sk-circle"></div>
+						<div className="sk-circle5 sk-circle"></div>
+						<div className="sk-circle6 sk-circle"></div>
+						<div className="sk-circle7 sk-circle"></div>
+						<div className="sk-circle8 sk-circle"></div>
+						<div className="sk-circle9 sk-circle"></div>
+						<div className="sk-circle10 sk-circle"></div>
+						<div className="sk-circle11 sk-circle"></div>
+						<div className="sk-circle12 sk-circle"></div>
+					</div>
+				)}
+
+				{resultadoApi.PRICE && <ShowResultadoApi resultadoApi={resultadoApi} />}
 			</div>
 		</Contenedor>
 	);

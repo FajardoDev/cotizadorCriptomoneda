@@ -1,8 +1,9 @@
+import { useState } from "react";
 import styled from "@emotion/styled";
 import { useSelectMonedas } from "../hooks/useSelectMonedas";
-import { monedas } from "../data/monedas";
 
-import { useFetchCriptos } from "../hooks/useFetchCriptos";
+import { Error } from "./Error";
+import { monedas } from "../data/monedas";
 
 const InputSumit = styled.input`
 	background-color: #9497ff;
@@ -23,22 +24,39 @@ const InputSumit = styled.input`
 	}
 `;
 // moneda  asi se llama el state que tenorné en useSelectMonedas
-export const Formulario = () => {
-	const { cripto, isLoading } = useFetchCriptos();
-
+export const Formulario = ({ setMonedas, cripto }) => {
 	const [moneda, SelectMonedas] = useSelectMonedas("Elige tu Moneda", monedas);
 	const [criptomonedas, SelectCriptoMonedas] = useSelectMonedas(
 		"Elige tu Criptomonedas",
 		cripto,
 	);
-	// SelectMonedas();
+
+	const [error, setError] = useState(false);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		if ([moneda, criptomonedas].includes("")) {
+			setError("Ambos campos son obligatorios");
+			return;
+		}
+		setError(false);
+		// para pasar el object valor de del select
+		setMonedas({
+			moneda,
+			criptomonedas,
+		});
+	};
 
 	return (
-		<form>
-			<SelectMonedas />
-			<SelectCriptoMonedas />
+		<>
+			{error && <Error>{error}</Error>}
+			<form onSubmit={handleSubmit}>
+				<SelectMonedas />
+				<SelectCriptoMonedas />
 
-			<InputSumit type="submit" value="Cotizar" />
-		</form>
+				<InputSumit type="submit" value="Cotizar" />
+			</form>
+		</>
 	);
 };

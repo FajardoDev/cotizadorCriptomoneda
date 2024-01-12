@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 
 export const useSelectMonedas = (label, opciones) => {
 	const [state, setState] = useState(""); // Para leer el Select
+	const [error, setError] = useState(false);
 
 	const Label = styled.label`
 		color: #fff;
