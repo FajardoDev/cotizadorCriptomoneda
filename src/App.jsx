@@ -5,7 +5,7 @@ import { getCotizarCripto } from "./helpers/getCotizarCripto";
 import { ShowResultadoApi } from "./components/ShowResultadoApi";
 import { useFetchCriptos } from "./hooks/useFetchCriptos";
 import { Spinner } from "./components/Spinner";
-import ImagenCripto from "./img/image-3046639_1280.png";
+import ImagenCriptos from "../src/img/image-3046639_1280.png";
 
 const Contenedor = styled.div`
 	max-width: 992px;
@@ -85,7 +85,7 @@ function App() {
 			</Titulo>
 
 			<Contenedor>
-				<Imagen src={ImagenCripto} alt="Imagen Criptomonedas" />
+				<Imagen src={ImagenCriptos} alt="Imagen Criptomonedas" />
 
 				<div>
 					<Heading className=" font-extrabold">
