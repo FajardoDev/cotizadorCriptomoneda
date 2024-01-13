@@ -28,6 +28,7 @@ export const useSelectMonedas = (label, opciones) => {
 			<Label htmlFor="">{label}</Label>
 
 			<Select
+				className="shadow-lg shadow-blue-950/60 bg-slate-300/20 has-[:checked]:bg-indigo-50 has-[:checked]:text-slate-900 has-[:checked]:ring-indigo-200"
 				name=""
 				id=""
 				value={state}
