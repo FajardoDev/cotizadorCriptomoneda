@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { Formulario } from "./components/Formulario";
-import ImagenCripto from "./img/image-3046593_1280.png";
 import { useEffect, useState } from "react";
 import { getCotizarCripto } from "./helpers/getCotizarCripto";
 import { ShowResultadoApi } from "./components/ShowResultadoApi";
 import { useFetchCriptos } from "./hooks/useFetchCriptos";
 import { Spinner } from "./components/Spinner";
+import ImagenCripto from "./img/image-3046639_1280.png";
 
 const Contenedor = styled.div`
 	max-width: 992px;

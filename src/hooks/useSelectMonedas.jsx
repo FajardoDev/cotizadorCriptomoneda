@@ -25,16 +25,16 @@ export const useSelectMonedas = (label, opciones) => {
 	const SelectMonedas = () => (
 		// console.log("Desde Select Monedas");
 		<>
-			<Label htmlFor="">{label}</Label>
+			<Label htmlFor="monedas">{label}</Label>
 
 			<Select
 				className="shadow-lg shadow-blue-950/60 bg-slate-300/20 has-[:checked]:bg-indigo-50 has-[:checked]:text-slate-900 has-[:checked]:ring-indigo-200"
 				name=""
-				id=""
+				id="monedas"
 				value={state}
 				onChange={({ target }) => setState(target.value)}
 			>
-				<option value="">Seleccione</option>
+				<option value="">Seleccione...</option>
 
 				{opciones.map((opcion) => (
 					<option key={opcion.id} value={opcion.id}>
